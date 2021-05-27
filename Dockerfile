@@ -1,12 +1,12 @@
-FROM registry.access.redhat.com/ubi8/nodejs-14-minimal:1
+FROM docker.io/node:14.7-alpine
 
-USER 1001
+WORKDIR /user-app
 
-WORKDIR /opt/app-root/src
+COPY package*.json ./
+RUN npm ci --only=production
 
-COPY package.json /opt/app-root/src
-RUN npm install --only=prod
-COPY server.js /opt/app-root/src/
+
+COPY server.js .
 
 ENV NODE_ENV production
 ENV PORT 3000
