@@ -1,5 +1,7 @@
 FROM registry.access.redhat.com/ubi8/nodejs-14-minimal:1
 
+USER 1001
+
 WORKDIR /opt/app-root/src
 
 COPY package.json /opt/app-root/src
